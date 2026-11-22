@@ -1,0 +1,6 @@
+{
+  "name": "SchemeSaathi",
+  "description": "Universal West Bengal Government Welfare Scheme Discovery Platform helping citizens and families discover scholarships, pensions, women's assistance, farmer support, healthcare, housing, food security, employment, and worker benefits.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Barlow Condensed", "Plus Jakarta Sans", sans-serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-bengali: "Noto Sans Bengali", "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-outer: #C8E3A9;
+  --color-shell: #050505;
+  --color-card: #1D1D1D;
+  --color-panel: #252525;
+  --color-lime-accent: #B6FF50;
+  --color-orange-accent: #FF9D2E;
+  --color-text-primary: #FFFFFF;
+  --color-text-muted: #A3A3A3;
+  --color-border-dark: #303030;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    background-color: #C8E3A9;
+    color: #FFFFFF;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #C8E3A9;
+    color: #FFFFFF;
+    overflow-x: hidden;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  .font-bengali {
+    font-family: var(--font-bengali);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  button:not(:disabled),
+  a[href],
+  select,
+  input[type="checkbox"],
+  input[type="radio"] {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid #B6FF50;
+    outline-offset: 2px;
+  }
+
+  /* Custom subtle dark scrollbar inside dashboard panels */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #141414;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #303030;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #484848;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

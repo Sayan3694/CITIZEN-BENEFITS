@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        try {
+          var desc = Object.getOwnPropertyDescriptor(window, 'fetch');
+          if (desc && typeof desc.get === 'function' && !desc.set && desc.configurable) {
+            Object.defineProperty(window, 'fetch', {
+              get: desc.get,
+              set: function () {},
+              configurable: true,
+              enumerable: Boolean(desc.enumerable),
+            });
+          }
+        } catch (_) {}
+
+        window.addEventListener(
+          'error',
+          function (event) {
+            var filename = (event && event.filename) || '';
+            var message = (event && event.message) || '';
+            var stack = (event && event.error && event.error.stack) || '';
+            var isExtensionScript =
+              filename.indexOf('chrome-extension://') === 0 ||
+              stack.indexOf('chrome-extension://') !== -1;
+            if (isExtensionScript && message.indexOf('Cannot set property fetch') !== -1) {
+              event.preventDefault();
+              event.stopImmediatePropagation();
+            }
+          },
+          true
+        );
+      })();
+    </script>
+    <title>SchemeSaathi — West Bengal Government Welfare Dashboard</title>
+    <meta
+      name="description"
+      content="Discover scholarships, pensions, healthcare, women's financial assistance, farmer support, housing, and government welfare benefits for you and your family in West Bengal."
+    />
+    <meta name="theme-color" content="#050505" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta property="og:title" content="SchemeSaathi — West Bengal Government Welfare Discovery" />
+    <meta
+      property="og:description"
+      content="Universal government welfare scheme discovery platform for West Bengal citizens and households."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[#C8E3A9] text-white antialiased selection:bg-[#B6FF50]/30 selection:text-[#B6FF50]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
